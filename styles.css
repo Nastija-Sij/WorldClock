@@ -1,3 +1,35 @@
+body {
+  background-color: rgb(67, 102, 67);
+}
+
+.container {
+  border: none;
+
+  border-radius: 17px;
+  width: 700px;
+  height: 800px;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: rgb(169, 186, 159);
+}
 h1 {
-  color: blue;
+  margin: 30 auto;
+  display: block;
+  text-align: center;
+}
+#select-form {
+  width: 140px;
+}
+main {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+  color: white;
 }
