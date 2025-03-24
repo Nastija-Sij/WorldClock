@@ -1,31 +1,74 @@
 body {
-  background-color: rgb(67, 102, 67);
+  background-color: #f2e1a6;
 }
 
 .container {
   border: none;
-
   border-radius: 17px;
-  width: 700px;
-  height: 800px;
-  padding: 10px;
+  max-width: 600px;
+  padding: 30px;
   margin: 0 auto;
-  background-color: rgb(169, 186, 159);
+  background-color: #fff5d0;
+  box-shadow: rgba(0, 0, 0, 0.305) 0px 7px 30px 0px;
 }
 h1 {
-  margin: 30 auto;
-  display: block;
+  margin-bottom: 50px;
   text-align: center;
+  font-family: "Lustria", serif;
+  font-size: 60px;
 }
-#select-form {
-  width: 140px;
-}
-main {
-  display: flex;
-  flex-direction: column;
 
+select {
+  width: 100%;
+  max-width: 570px;
+  margin: 0 auto 20px;
+  padding: 10px 5px 10px 5px;
+  border-radius: 7px;
+  display: block;
+}
+
+.city-container {
   max-width: 800px;
   padding: 0 20px;
+}
+
+.city-entry {
+  margin-bottom: 20px;
+}
+
+.area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.city-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.city {
+  font-family: "Lustria", serif;
+  font-size: 30px;
+}
+.date {
+  font-family: "League Spartan", sans-serif;
+
+  margin-top: 0px;
+}
+
+.time {
+  font-family: "Lustria", serif;
+  font-size: 40px;
+  font-weight: lighter;
+  height: 100%;
+  display: flex;
+  align-items: left;
+}
+
+hr {
+  margin: 20px auto;
+  border: 1px solid #f2e1a6;
 }
 
 footer {
