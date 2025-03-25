@@ -9,7 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lustria&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Rozha+One&display=swap"
       rel="stylesheet"
     />
-    <script src="source/script.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.47/moment-timezone-with-data-1970-2030.min.js"></script>
+
     <link rel="stylesheet" href="styles.css" />
     <title>World Clock</title>
   </head>
@@ -33,41 +36,35 @@
 
         <div class="city-container">
           <div class="city-entry">
-            <div class="area">
+            <div class="area" id="los-angeles">
               <div class="city-info">
-                <p><span class="city">Los Angeles</span> UTC -8</p>
-                <p class="date">Sunday, 23 March</p>
+                <p>
+                  <span class="city">Los Angeles</span>
+                  <span id="utc-la"></span>
+                </p>
+                <p class="date"></p>
               </div>
-              <h2 class="time">14:30:23</h2>
+              <h2 class="time"></h2>
             </div>
             <hr class="divider" />
           </div>
 
           <div class="city-entry">
-            <div class="area">
+            <div class="area" id="new-york">
               <div class="city-info">
-                <p><span class="city">New York</span> UTC -4</p>
+                <p>
+                  <span class="city">New York</span><span id="utc-ny"></span>
+                </p>
 
-                <p class="date">Sunday, 23 March</p>
+                <p class="date"></p>
               </div>
-              <h2 class="time">10:30:23</h2>
-            </div>
-
-            <hr class="divider" />
-          </div>
-
-          <div class="city-entry">
-            <div class="area">
-              <div class="city-info">
-                <p><span class="city">London</span> UTC 0</p>
-                <p class="date">Sunday, 23 March</p>
-              </div>
-              <h2 class="time">8:30:23</h2>
+              <h2 class="time"></h2>
             </div>
           </div>
         </div>
       </main>
     </div>
     <footer>Coded by Nastija Sij and it's open sourced on GitHub</footer>
+    <script src="source/script.js"></script>
   </body>
 </html>
