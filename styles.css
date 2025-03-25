@@ -18,6 +18,9 @@ h1 {
   font-size: 50px;
   color: #5d768b;
 }
+.current-tz {
+  font-size: 14px;
+}
 
 select {
   width: 100%;
@@ -31,6 +34,9 @@ select {
 .city-container {
   max-width: 600px;
   padding: 0 20px;
+}
+.hidden {
+  display: none;
 }
 
 .area {
@@ -51,7 +57,7 @@ select {
 }
 .date {
   font-family: "League Spartan", sans-serif;
-  margin-top: 0px;
+  margin-top: 5px;
 }
 
 .time {

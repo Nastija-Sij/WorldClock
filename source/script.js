@@ -1,58 +1,92 @@
-function displayDate() {
-  //Los Angeles
-  let losAngelesElement = document.querySelector("#los-angeles");
-  if (losAngelesElement) {
-    let losAngelesDateElement = losAngelesElement.querySelector(".date");
-    let losAngelesTimeElement = losAngelesElement.querySelector(".time");
-    let losAngelesUtcElement = losAngelesElement.querySelector("#utc-la");
-    let losAngelesTime = moment().tz("America/Los_Angeles");
+document.addEventListener("DOMContentLoaded", () => {
+  displayCurrentCity();
+  setInterval(updateAllTimes, 1000); // Update all displayed cities every second
+});
 
-    losAngelesUtcElement.innerHTML = `UTC ${losAngelesTime.format("Z")}  `;
-    losAngelesDateElement.innerHTML = losAngelesTime.format("dddd, LL");
-    losAngelesTimeElement.innerHTML = losAngelesTime.format("HH:mm:ss");
-  }
+let selectCitiesElement = document.querySelector("#select-cities");
+selectCitiesElement.addEventListener("change", addCity);
 
-  let newYorkElement = document.querySelector("#new-york");
-  if (newYorkElement) {
-    let newYorkDateElement = newYorkElement.querySelector(".date");
-    let newYorkTimeElement = newYorkElement.querySelector(".time");
-    let newYorkUtcElement = newYorkElement.querySelector("#utc-ny");
-    let newYorkTime = moment().tz("America/New_York");
+function displayCurrentCity() {
+  let currentCityTimeZone = moment.tz.guess();
+  let currentCityName = currentCityTimeZone.replace("_", " ").split("/")[1];
+  let currentCityTime = moment().tz(currentCityTimeZone);
 
-    newYorkUtcElement.innerHTML = `UTC ${newYorkTime.format("Z")}`;
-    newYorkDateElement.innerHTML = newYorkTime.format("dddd, LL");
-    newYorkTimeElement.innerHTML = newYorkTime.format("HH:mm:ss");
-  }
+  let currentCityElement = document.querySelector("#current-city");
+  currentCityElement.innerHTML = `
+    <div class="area">
+      <div class="city-info">
+        <p><span class="current-tz">Current timezone:</span> </br>
+          <span class="city">${currentCityName}</span>
+          <span class="utc">UTC ${currentCityTime.format("Z")}</span>
+        </p>
+        <p class="date">${currentCityTime.format("dddd, LL")}</p>
+      </div>
+      <h2 class="time">${currentCityTime.format("HH:mm:ss")}</h2>
+    </div>
+    <hr />
+  `;
+  currentCityElement.setAttribute("data-timezone", currentCityTimeZone);
 }
 
-function updateCity(event) {
+function addCity(event) {
   let cityTimeZone = event.target.value;
+  if (!cityTimeZone) return; // Exit if no city selected
+
   let cityName = cityTimeZone.replace("_", " ").split("/")[1];
   let cityTime = moment().tz(cityTimeZone);
 
+  // Check if the city already exists to prevent duplicates
+  let existingCity = document.querySelector(
+    `[data-timezone="${cityTimeZone}"]`
+  );
+  if (existingCity) return;
+
   let cityContainerElement = document.querySelector("#city-container");
-  cityContainerElement.innerHTML = `
-      <div class="city-entry">
-       <div class="area" id="los-angeles">
-       <div class="city-info">
+  let newCityElement = document.createElement("div");
+  newCityElement.classList.add("city-entry");
+  newCityElement.setAttribute("data-timezone", cityTimeZone);
+
+  newCityElement.innerHTML = `
+    <div class="area">
+      <div class="city-info">
         <p>
           <span class="city">${cityName}</span>
-          <span id="utc-la">UTC ${cityTime.format("Z")}</span>
+          <span class="utc">UTC ${cityTime.format("Z")}</span>
         </p>
         <p class="date">${cityTime.format("dddd, LL")}</p>
       </div>
-      <h2 class="time">${cityTime.format("HH:mm:ss")}</h2>   
-      </div>        </div>
+      <h2 class="time">${cityTime.format("HH:mm:ss")}</h2>
+    </div>
+    
   `;
+
+  cityContainerElement.appendChild(newCityElement);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  //DOMContentLoaded is an event that fires when the HTML document is fully loaded and parsed, but before images, stylesheets, and other external resources are completely loaded. By default, JavaScript in the <head> runs before the browser finishes loading the HTML. If you try to select an element (document.querySelector) that hasn’t been created yet, JavaScript will return null, causing errors like:
-  displayDate();
-});
+function updateAllTimes() {
+  // Update current city
+  let currentCityElement = document.querySelector("#current-city");
+  let currentCityTimeZone = currentCityElement.getAttribute("data-timezone");
+  let currentCityTime = moment().tz(currentCityTimeZone);
 
-displayDate(); // calls the function
-setInterval(displayDate, 1000); // calls the function every second
+  if (currentCityElement) {
+    currentCityElement.querySelector(".date").textContent =
+      currentCityTime.format("dddd, LL");
+    currentCityElement.querySelector(".time").textContent =
+      currentCityTime.format("HH:mm:ss");
+    currentCityElement.querySelector(
+      ".utc"
+    ).textContent = `UTC ${currentCityTime.format("Z")}`;
+  }
 
-let selectCitiesElement = document.querySelector("#select-cities");
-selectCitiesElement.addEventListener("change", updateCity);
+  // Update all selected cities
+  let cityEntries = document.querySelectorAll(".city-entry[data-timezone]");
+  cityEntries.forEach((city) => {
+    let cityTimeZone = city.getAttribute("data-timezone");
+    let cityTime = moment().tz(cityTimeZone);
+
+    city.querySelector(".date").textContent = cityTime.format("dddd, LL");
+    city.querySelector(".time").textContent = cityTime.format("HH:mm:ss");
+    city.querySelector(".utc").textContent = `UTC ${cityTime.format("Z")}`;
+  });
+}
