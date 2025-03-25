@@ -1,26 +1,27 @@
 body {
-  background-color: #f2e1a6;
+  background-color: #e3c9a4;
 }
 
 .container {
   border: none;
   border-radius: 17px;
-  max-width: 600px;
+  max-width: 500px;
   padding: 30px;
-  margin: 0 auto;
-  background-color: #fff5d0;
+  margin: 60px auto;
+  background-color: #f8efe5;
   box-shadow: rgba(0, 0, 0, 0.305) 0px 7px 30px 0px;
 }
 h1 {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   text-align: center;
   font-family: "Lustria", serif;
-  font-size: 60px;
+  font-size: 50px;
+  color: #5d768b;
 }
 
 select {
   width: 100%;
-  max-width: 570px;
+  max-width: 470px;
   margin: 0 auto 20px;
   padding: 10px 5px 10px 5px;
   border-radius: 7px;
@@ -28,12 +29,8 @@ select {
 }
 
 .city-container {
-  max-width: 800px;
+  max-width: 600px;
   padding: 0 20px;
-}
-
-.city-entry {
-  margin-bottom: 20px;
 }
 
 .area {
@@ -49,30 +46,35 @@ select {
 }
 .city {
   font-family: "Lustria", serif;
-  font-size: 30px;
+  font-size: 20px;
+  font-weight: bolder;
 }
 .date {
   font-family: "League Spartan", sans-serif;
-
   margin-top: 0px;
 }
 
 .time {
   font-family: "Lustria", serif;
-  font-size: 40px;
+  font-size: 34px;
   font-weight: lighter;
   height: 100%;
   display: flex;
   align-items: left;
 }
+p {
+  margin-bottom: 0;
+  font-size: 12px;
+}
 
-hr {
-  margin: 20px auto;
-  border: 1px solid #f2e1a6;
+.divider {
+  margin: 0px auto;
+  border: 1px solid #c8b39b;
 }
 
 footer {
-  margin-top: 20px;
+  margin-top: 0px;
   text-align: center;
-  color: white;
+  color: rgba(93, 118, 139, 0.741);
+  margin-bottom: 20px;
 }
